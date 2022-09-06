@@ -1,41 +1,43 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
-  const seenNumbers = new set();  //Initialize an empty set
-  for (const number of array) {
-    const complement = target - number;
-    if (seenNumbers.has(complement)) return true;  //returns true if the set includes the complement
-    seenNumbers.add(Number);   ///adds the number to the set
+  for (let i = 0; i < array.length; i++) {
+    // n steps (depending on the length of the input array)
+    const complement = target - array[i];
+    for (let j = i + 1; j < array.length; j++) {
+      // n * n steps (nested loop!)
+      if (array[j] === complement) return true;
+    }
   }
+  // 1 step
   return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
-*/// 0(log n)
+*/
 
+// O(log n)
 /* 
   Add your pseudocode here
 */
+// create an empty object
+// iterate through the array trying to find the compliments
+// the complement is stored in our object
+// if compliment is found, returns true
 
 /*
   Add written explanation of your solution here
 */
-
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
   console.log("=>", hasTargetSum([3, 8, 12, 4, 11, 7], 10));
-
   console.log("");
-
   console.log("Expecting: true");
   console.log("=>", hasTargetSum([22, 19, 4, 6, 30], 25));
-
   console.log("");
-
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
 }
-
 module.exports = hasTargetSum;
